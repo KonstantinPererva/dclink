@@ -45,7 +45,7 @@ $menuBlockId = "catalog_menu_".$this->randString();
 				>
 					<span>
 						<?=$arResult["ALL_ITEMS"][$itemID]["TEXT"]?>
-						<?if (is_array($arColumns) && count($arColumns) > 0):?><i class="fa fa-angle-down"></i><?endif?>
+						<?if (is_array($arColumns) && count($arColumns) > 0):?><?endif?>
 					</span>
 				</a>
 			<?if (is_array($arColumns) && count($arColumns) > 0):?>
