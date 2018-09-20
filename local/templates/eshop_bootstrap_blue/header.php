@@ -104,7 +104,7 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
               </div>
             </div>
 
-            <div class="bx-data-goods">
+            <a href="#" class="bx-data-goods">
               <span class="bx-data-goods__num">0</span>
               <span class="bx-data-goods__ico">
                 <svg class="bx-data-goods__svg" width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,9 +112,9 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
                 </svg>
               </span>
               <span class="bx-data-goods__title">Сравнить</span>
-            </div>
+            </a>
 
-            <div class="bx-data-goods">
+            <a href="#" class="bx-data-goods">
               <span class="bx-data-goods__num bx-data-goods__num_basket">0</span>
               <span class="bx-data-goods__ico">
                 <svg class="bx-data-goods__svg bx-data-goods__svg_basket" width="54" height="40" viewBox="0 0 54 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +125,7 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
                 </svg>
               </span>
               <span class="bx-data-goods__title bx-data-goods__title_basket text-uppercase">Корзина</span>
-            </div>
+            </a>
 
 <!--            <div class="">-->
 <!--                --><?//$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.line", ".default", Array(
@@ -148,8 +148,8 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
       </div>
     </div>
 		<div class="bx-header-section container">
-			<div class="row">
-				<div class="col-md-12 hidden-xs bx-header-menu">
+			<div class="bx-header-section-row">
+				<div class="hidden-xs bx-header-menu">
 					<?$APPLICATION->IncludeComponent("bitrix:menu", "catalog_horizontal", Array(
 	"ROOT_MENU_TYPE" => "left",	// Тип меню для первого уровня
 		"MENU_CACHE_TYPE" => "A",	// Тип кеширования
@@ -244,10 +244,11 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
 	<div class="workarea">
 		<div class="container bx-content-seection">
 			<div class="row">
+        <div class="page-container">
 			<?
 			$hideSidebar =
 				defined("HIDE_SIDEBAR") && HIDE_SIDEBAR == true
 				|| preg_match("~^".SITE_DIR."(catalog|personal\\/cart|personal\\/order\\/make)/~", $curPage)
 			? true : false;
 			?>
-				<div class="bx-content <?=($hideSidebar ? "col-xs-12" : "col-md-9 col-sm-8")?>">
+				  <div class="bx-content <?=($hideSidebar ? "col-xs-12" : "col-md-9 col-sm-8")?> bx-content_left">

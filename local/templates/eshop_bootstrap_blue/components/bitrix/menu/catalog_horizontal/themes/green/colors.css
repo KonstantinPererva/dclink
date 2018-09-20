@@ -1,3 +1,26 @@
 .bx-green.bx-top-nav .bx-top-nav-container {
     background: #009e00;
 }
+
+.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl {
+    transition: .15s;
+}
+
+.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl.bx-active,
+.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl:hover {
+    background: rgba(255,255,255,.7);
+}
+
+.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl.bx-active>a,
+.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl:hover>a {
+    color: #006f00;
+}
+
+.bx-top-nav-container .bx-nav-3-lvl a:hover {
+    background: rgba(0,158,0,.3);
+}
+
+.bx-top-nav-container .bx-nav-2-lvl>a:hover {
+    background: rgba(0,158,0,.8);
+    color: #fff;
+}

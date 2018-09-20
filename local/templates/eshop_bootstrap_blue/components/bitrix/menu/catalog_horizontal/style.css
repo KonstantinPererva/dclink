@@ -43,18 +43,18 @@
 .bx-top-nav-container .bx-nav-1-lvl>a span {
 	/*padding: 10px 14px 14px;*/
 	display: block;
-	font-size: 14px;
+	font-size: 12px;
 }
 .bx-top-nav-container .bx-nav-1-lvl.bx-hover {}
 
 .bx-top-nav-container .bx-nav-1-lvl.bx-nav-parent.bx-hover>a,
 .bx-top-nav-container .bx-nav-1-lvl.bx-nav-parent.hover>a {
 	z-index: 250;
-	box-shadow: 0 6px 13px 0 rgba(0, 0, 0, .13)
+	/*box-shadow: 0 6px 13px 0 rgba(0, 0, 0, .13)*/
 }
 .bx-top-nav-container .bx-nav-1-lvl.bx-nav-parent.bx-hover>a span,
 .bx-top-nav-container .bx-nav-1-lvl.bx-nav-parent.hover>a span {
-	background: #fff;
+	/*background: #fff;*/
 }
 .bx-top-nav-container .bx-nav-parent-arrow{
 	display: none;
@@ -83,6 +83,7 @@
 	left: 0;
 	right: 0;
 }
+
 .bx-top-nav-container .bx-nav-1-lvl.bx-hover .bx-nav-2-lvl-container-advanced,
 .bx-top-nav-container .bx-nav-1-lvl.hover .bx-nav-2-lvl-container-advanced,
 .bx-top-nav-container .bx-nav-1-lvl.bx-hover .bx-nav-2-lvl-container,
@@ -425,6 +426,9 @@ body>.bx-aside-nav-control{
 @media (min-width: 1200px) {
 	.bx-top-nav-container .bx-nav-1-lvl>a {font-size: 15px;}
 	/*.bx-top-nav-container .bx-nav-1-lvl>a span {padding: 12px 14px 15px}*/
+	.bx-top-nav-container .bx-nav-1-lvl>a span {
+		font-size: 14px;
+	}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
 	.bx-top-nav-container .bx-nav-1-lvl>a {font-size: 13px;}
