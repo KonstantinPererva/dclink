@@ -19,7 +19,11 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	column-count: 2;
+	column-width: 210px;
+	column-gap: 30px;
 }
 .bx-inclinksfooter-item{
 	padding: 0 0 5px 0;
+	width: 210px;
 }
