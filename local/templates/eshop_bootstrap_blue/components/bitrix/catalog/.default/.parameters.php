@@ -481,6 +481,8 @@ $arTemplateParameters['DETAIL_USE_VOTE_RATING'] = array(
 	'REFRESH' => 'Y'
 );
 
+
+
 if (isset($arCurrentValues['DETAIL_USE_VOTE_RATING']) && 'Y' == $arCurrentValues['DETAIL_USE_VOTE_RATING'])
 {
 	$arTemplateParameters['DETAIL_VOTE_DISPLAY_AS_RATING'] = array(
@@ -645,7 +647,7 @@ $arTemplateParameters['DETAIL_PRODUCT_PAY_BLOCK_ORDER'] = array(
 		'quantity' => GetMessage('CP_BC_TPL_DETAIL_PRODUCT_BLOCK_QUANTITY'),
 		'buttons' => GetMessage('CP_BC_TPL_DETAIL_PRODUCT_BLOCK_BUTTONS')
 	)),
-	'DEFAULT' => 'rating,price,priceRanges,quantityLimit,quantity,buttons'
+	'DEFAULT' => 'sql,rating,price,priceRanges,quantityLimit,quantity,buttons'
 );
 $arTemplateParameters['DETAIL_SHOW_SLIDER'] = array(
 	'PARENT' => 'DETAIL_SETTINGS',

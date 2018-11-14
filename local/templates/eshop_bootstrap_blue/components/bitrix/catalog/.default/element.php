@@ -336,7 +336,8 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 								<?=GetMessage('CATALOG_RECOMMENDED_BY_LINK')?>
 							</div>
 							<?
-							$APPLICATION->IncludeComponent(
+
+                            $APPLICATION->IncludeComponent(
 								'bitrix:catalog.recommended.products',
 								'',
 								array(
@@ -441,7 +442,10 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 								<?=GetMessage('CATALOG_POPULAR_IN_SECTION')?>
 							</div>
 							<?
-							$APPLICATION->IncludeComponent(
+                            global $arrFilter;
+                            $arrFilter = array('!CATALOG_PRICE_2' => false, '>CATALOG_QUANTITY' => 0);
+
+                            $APPLICATION->IncludeComponent(
 								'bitrix:catalog.section',
 								'',
 								array(
@@ -472,6 +476,8 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 									'SHOW_PRICE_COUNT' => $arParams['SHOW_PRICE_COUNT'],
 									'PAGE_ELEMENT_COUNT' => 4,
 									'FILTER_IDS' => array($elementId),
+
+                                    "FILTER_NAME" => "arrFilter",
 
 									"SET_TITLE" => "N",
 									"SET_BROWSER_TITLE" => "N",
@@ -574,6 +580,7 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 								<?=GetMessage('CATALOG_VIEWED')?>
 							</div>
 							<?
+
 							$APPLICATION->IncludeComponent(
 								'bitrix:catalog.products.viewed',
 								'',
@@ -603,6 +610,8 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 									'SHOW_PRICE_COUNT' => $arParams['SHOW_PRICE_COUNT'],
 									'PAGE_ELEMENT_COUNT' => 4,
 									'SECTION_ELEMENT_ID' => $elementId,
+
+                                    "FILTER_NAME" => "arrFilter",
 
 									"SET_TITLE" => "N",
 									"SET_BROWSER_TITLE" => "N",
@@ -688,6 +697,7 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 					'PATH' => $arParams['SIDEBAR_PATH'],
 					'AREA_FILE_RECURSIVE' => 'N',
 					'EDIT_MODE' => 'html',
+					'ELEMENT_ID' => $elementId
 				),
 				false,
 				array('HIDE_ICONS' => 'Y')

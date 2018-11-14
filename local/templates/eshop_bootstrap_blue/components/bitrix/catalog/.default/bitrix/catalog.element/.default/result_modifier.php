@@ -23,3 +23,23 @@ if (sizeof($pictureList)) {
 
     $arResult['MORE_PHOTO_COUNT'] = sizeof($pictureList);
 }
+
+$rsStore = \Bitrix\Catalog\StoreProductTable::getList(array(
+    'filter' => array('=PRODUCT_ID'=>$arResult["ID"],'STORE.ACTIVE'=>'Y'),
+    'select' => array('AMOUNT','STORE_ID','STORE_TITLE' => 'STORE.TITLE'),
+));
+$store_count = 0;
+while($arStore=$rsStore->fetch())
+{
+    if($arStore["STORE_ID"] !== "6"){
+        $store_count += intval($arStore["AMOUNT"]);
+    }else{
+        $arResult["STORE_COUNT_ORDER"] = $arStore;
+    }
+}
+//print_r($store_count);
+$arResult["STORE_COUNT"] = $store_count;
+
+$key = array_search("Код SQL", $arResult["PROPERTIES"]["CML2_TRAITS"]["DESCRIPTION"]);
+
+$arResult["SQL_CODE"] = $arResult["PROPERTIES"]["CML2_TRAITS"]["VALUE"][$key];

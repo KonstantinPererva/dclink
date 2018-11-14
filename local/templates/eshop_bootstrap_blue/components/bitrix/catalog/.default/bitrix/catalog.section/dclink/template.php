@@ -167,25 +167,37 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 }
 ?>
 
+
 <div class="catalog-section bx-<?=$arParams['TEMPLATE_THEME']?>" data-entity="<?=$containerName?>">
 	<?
 	if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS']))
 	{
+		//echo "<pre>";
+		//var_dump($arResult['ITEM_ROWS']);
+		//echo "</pre>";
+
 		$areaIds = array();
 
 		foreach ($arResult['ITEMS'] as $item)
 		{
 			$uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
-			$areaIds[$item['ID']] = $this->GetEditAreaId($product-item-image-alternativeuniqueId);
+			$areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
+
 			$this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
 			$this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
 		}
 		?>
+
 		<!-- items-container -->
 		<?
+		//var_dump($arResult['ITEM_ROWS']);
 		foreach ($arResult['ITEM_ROWS'] as $rowData)
 		{
 			$rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);
+
+			//var_dump($rowData['COUNT']);
+			//var_dump($rowData['VARIANT']);
+
 			?>
 			<div class="row <?=$rowData['CLASS']?>" data-entity="items-row">
 				<?

@@ -41,6 +41,7 @@ if ($itemCount > 0)
 if (!empty($arResult))
 {
 ?><div class="bx_catalog_compare_form">
+
 <table id="<? echo $idCompareTable; ?>" class="compare-items">
 <thead><tr><td align="center" colspan="2"><?=GetMessage("CATALOG_COMPARE_ELEMENTS")?></td></tr></thead>
 <tbody><?

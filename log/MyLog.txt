@@ -1,0 +1,214 @@
+2018-11-14 10:24:36 WarehouseWarehouse
+2018-11-14 10:24:36 0.5
+2018-11-14 10:24:36 4496.06
+2018-11-14 10:24:36 Array
+(
+    [success] => 1
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [AssessedCost] => 4496.06
+                    [Cost] => 22
+                )
+
+        )
+
+    [errors] => Array
+        (
+        )
+
+    [warnings] => Array
+        (
+            [0] => DateTime is set to current
+            [1] => CargoType is changed to Parcel
+        )
+
+    [info] => Array
+        (
+        )
+
+    [messageCodes] => Array
+        (
+        )
+
+    [errorCodes] => Array
+        (
+        )
+
+    [warningCodes] => Array
+        (
+            [0] => 30000200880
+            [1] => 30000201469
+        )
+
+    [infoCodes] => Array
+        (
+        )
+
+)
+
+2018-11-14 10:24:36 DoorsDoors
+2018-11-14 10:24:36 0.5
+2018-11-14 10:24:36 4496.06
+2018-11-14 10:24:36 Array
+(
+    [success] => 1
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [AssessedCost] => 4496.06
+                    [Cost] => 92
+                    [TZoneInfo] => Array
+                        (
+                            [TzoneName] => Тарифна зона: Тарифна зона 0 (0)
+                            [TzoneID] => 00
+                        )
+
+                )
+
+        )
+
+    [errors] => Array
+        (
+        )
+
+    [warnings] => Array
+        (
+            [0] => DateTime is set to current
+            [1] => CargoType is changed to Parcel
+            [2] => Cost calculate error with no services
+        )
+
+    [info] => Array
+        (
+        )
+
+    [messageCodes] => Array
+        (
+        )
+
+    [errorCodes] => Array
+        (
+        )
+
+    [warningCodes] => Array
+        (
+            [0] => 30000200880
+            [1] => 30000201469
+        )
+
+    [infoCodes] => Array
+        (
+        )
+
+)
+
+2018-11-14 10:24:37 WarehouseWarehouse
+2018-11-14 10:24:37 0.5
+2018-11-14 10:24:37 4496.06
+2018-11-14 10:24:37 Array
+(
+    [success] => 1
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [AssessedCost] => 4496.06
+                    [Cost] => 22
+                )
+
+        )
+
+    [errors] => Array
+        (
+        )
+
+    [warnings] => Array
+        (
+            [0] => DateTime is set to current
+            [1] => CargoType is changed to Parcel
+        )
+
+    [info] => Array
+        (
+        )
+
+    [messageCodes] => Array
+        (
+        )
+
+    [errorCodes] => Array
+        (
+        )
+
+    [warningCodes] => Array
+        (
+            [0] => 30000200880
+            [1] => 30000201469
+        )
+
+    [infoCodes] => Array
+        (
+        )
+
+)
+
+2018-11-14 10:24:37 DoorsDoors
+2018-11-14 10:24:37 0.5
+2018-11-14 10:24:37 4496.06
+2018-11-14 10:24:37 Array
+(
+    [success] => 1
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [AssessedCost] => 4496.06
+                    [Cost] => 92
+                    [TZoneInfo] => Array
+                        (
+                            [TzoneName] => Тарифна зона: Тарифна зона 0 (0)
+                            [TzoneID] => 00
+                        )
+
+                )
+
+        )
+
+    [errors] => Array
+        (
+        )
+
+    [warnings] => Array
+        (
+            [0] => DateTime is set to current
+            [1] => CargoType is changed to Parcel
+            [2] => Cost calculate error with no services
+        )
+
+    [info] => Array
+        (
+        )
+
+    [messageCodes] => Array
+        (
+        )
+
+    [errorCodes] => Array
+        (
+        )
+
+    [warningCodes] => Array
+        (
+            [0] => 30000200880
+            [1] => 30000201469
+        )
+
+    [infoCodes] => Array
+        (
+        )
+
+)
+

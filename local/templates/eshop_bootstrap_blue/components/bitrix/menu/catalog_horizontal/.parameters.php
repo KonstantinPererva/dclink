@@ -10,7 +10,8 @@ $arThemesMessages = array(
 	"yellow" => GetMessage("F_THEME_YELLOW"),
 	"green" => GetMessage("F_THEME_GREEN"),
 	"red" => GetMessage("F_THEME_RED"),
-	"black" => GetMessage("F_THEME_BLACK")
+	"black" => GetMessage("F_THEME_BLACK"),
+	"turquoise" => GetMessage("F_THEME_TURQUOISE")
 );
 $dir = trim(preg_replace("'[\\\\/]+'", "/", dirname(__FILE__)."/themes/"));
 if (is_dir($dir) && $directory = opendir($dir))

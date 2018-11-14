@@ -24,8 +24,34 @@ if ($isFilter || $isSidebar): ?>
 	<div class="col-md-3 col-sm-4 col-sm-push-8 col-md-push-9<?=(isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '')?>">
 		<? if ($isFilter): ?>
 			<div class="bx-sidebar-block">
+
 				<?
-				$APPLICATION->IncludeComponent(
+
+				global $arrFilter;
+                $arr = [];
+                $arPrices = [];
+                foreach ($arParams["PRICE_CODE"] as $key => $price) {
+                    //var_dump($key.$price);
+                    $dbPriceType = CCatalogGroup::GetList(
+                        array("SORT" => "ASC"),
+                        array("NAME" => $price)
+                    );
+                    $arPriceType = $dbPriceType->Fetch();
+                    //$arrFilter['!CATALOG_PRICE_' . $arPriceType["ID"]] = false;
+                    $arr['!CATALOG_PRICE_' . $arPriceType["ID"]] = false;
+
+                }
+
+                $arLogic = array("LOGIC" => "OR");
+
+                foreach ($arr as $key => $ar){
+                    $arLogic[] = array($key => $ar, "IBLOCK_ID" => $arParams["IBLOCK_ID"]);
+                }
+
+                $arrFilter[] = $arLogic;
+
+
+                        $APPLICATION->IncludeComponent(
 					"bitrix:catalog.smart.filter",
 					"",
 					array(

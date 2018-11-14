@@ -1,26 +1,40 @@
 .bx-green.bx-top-nav .bx-top-nav-container {
-	background: #159ebb;
+    background: #009e00;
 }
-.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl.bx-hover>a,
+
+.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl {
+    transition: .15s;
+}
+
+.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl.bx-active,
+.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl:hover {
+    background: #ffb700;
+}
+
 .bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl.bx-active>a,
 .bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl:hover>a {
-	background: #44b1c9;
-	border-bottom: none;
+    color: #006f00;
 }
-.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl.bx-nav-parent.bx-hover>a,
-.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-1-lvl.bx-nav-parent:hover>a {
-	color: #159ebb;
-	background-color: transparent;
+
+.bx-top-nav-container .bx-nav-3-lvl a:hover {
+    color: #009e00;
+    text-decoration: underline;
 }
-/*2 lvl*/
-.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-2-lvl>a.bx-active,
-.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-2-lvl>a:hover {
-	color: #159ebb;
-	background: #F0F0F0;
+
+.bx-top-nav-container .bx-nav-2-lvl:hover>a {
+    background: #fff;
+    color: #000;
 }
-/*3 lvl*/
-.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-3-lvl a.bx-active,
-.bx-green.bx-top-nav .bx-top-nav-container .bx-nav-3-lvl a:hover {
-	color: #159ebb;
-	background: #F0F0F0;
+
+.bx-top-nav-container .bx-nav-2-lvl-container-advanced,
+.bx-top-nav-container .bx-nav-2-lvl-container {
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    padding: 9px 0 5px;
+    box-shadow: 0 6px 13px 0 rgba(0, 0, 0, .13);
+    border-top: none;
+    min-width: 100%;
+    color: #000;
+    background: #ffeab8;
 }

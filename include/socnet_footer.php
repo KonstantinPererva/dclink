@@ -9,6 +9,7 @@
 		"TWITTER" => "https://twitter.com/1c_bitrix",
 		"GOOGLE" => "https://plus.google.com/111119180387208976312/",
 		"INSTAGRAM" => "https://instagram.com/1CBitrix/",
+		"TEST" => "#",
 		"COMPONENT_TEMPLATE" => "big_squares"
 	),
 	false,
