@@ -91,9 +91,8 @@ img {
 }
 
 .bx-header__inner {
-	height: 109px;
-	background: url(/local/templates/eshop_bootstrap_blue/images/header-bg.jpg) no-repeat;
-	background-size: cover;
+	height: 86px;
+	background: url(/local/templates/eshop_bootstrap_blue/images/header-bg-stamp.jpg) repeat-x;
 }
 
 .bx-header__inner>.container {
@@ -107,8 +106,23 @@ img {
 .bx-header-hold {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	height: inherit;
 	padding: 0 45px;
+}
+
+.bx-header-hold__left {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	height: inherit;
+}
+
+.bx-header-hold__right {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	height: inherit;
 }
 
 .bx-header-menu {
@@ -117,13 +131,10 @@ img {
 /*Logo*/
 
 .bx-logo-wrapper {
-	width: 263px;
+	margin: 0 83px 0 0;
 }
 
-.bx-logo {
-	padding-left: 25px;
-	/*padding-bottom: 19px;*/
-}
+.bx-logo {}
 
 .bx-logo .bx-logo-block {
 	display: block;
@@ -164,7 +175,7 @@ img {
 }
 
 .bx-inc-orginfo {
-	width: 243px;
+	margin: 0 50px 0 0;
 }
 
 .bx-profile-link__button {
@@ -211,12 +222,17 @@ img {
 
 .bx-data-goods {
 	position: relative;
-	top: -3px;
-	display: block;
+	display: flex;
 	text-decoration: none;
 	outline: none;
-	width: 65px;
-	margin: 0 21px 0 0;
+	width: 41px;
+	height: 41px;
+	border-radius: 50%;
+	background: #4de481;
+	justify-content: center;
+	align-items: center;
+	margin: 0 0 0 27px;
+	transition: .15s;
 }
 
 .bx-data-goods:hover,
@@ -224,6 +240,7 @@ img {
 .bx-data-goods:active{
 	outline: none;
 	text-decoration: none;
+	background: #ffb400;
 }
 
 .bx-data-goods:hover .bx-data-goods__num,
@@ -241,28 +258,25 @@ img {
 }
 
 .bx-data-goods__num {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: -17px;
 	display: block;
-	height: 16px;
-	line-height: 16px;
+	height: 12px;
+	line-height: 14px;
 	text-align: center;
 	font-size: 14px;
 	font-family: 'Roboto', sans-serif;
 	color: #fff;
 }
 
-.bx-data-goods__num_basket {
-	position: relative;
-	right: 5px;
-}
-
 .bx-data-goods__ico {
-	display: flex;
-	height: 40px;
+	display: block;
 }
 
 .bx-data-goods__svg {
 	display: block;
-	margin: auto;
 }
 
 .bx-data-goods__svg_basket {
@@ -442,18 +456,6 @@ img {
 	font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-.bx-inc-orginfo-phone__ico {
-	display: inline-block;
-	width: 56px;
-	height: 56px;
-	border: 1px solid #fff;
-	border-radius: 50%;
-	text-align: center;
-	vertical-align: middle;
-	padding: 10px 0 0;
-	margin: 0 7px 0 0;
-}
-
 .bx-inc-orginfo-phone__num {
 	display: inline-block;
 	vertical-align: middle;
@@ -461,17 +463,19 @@ img {
 }
 
 .bx-inc-orginfo-phone__num p {
-	font-size: 18px;
-	line-height: 24px;
-	font-weight: 300;
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: 400;
 	margin: 0;
-	color: #000;
+	color: #fff;
 	font-family: 'Roboto', sans-serif;
 }
 
 .bx-inc-orginfo-phone__num p a {
-	font-size: 18px;
-	color: #000;
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: 400;
+	color: #fff;
 	text-decoration: none;
 	font-family: 'Roboto', sans-serif;
 }
@@ -505,9 +509,10 @@ img {
 
 .bx-address__text {
 	display: block;
-	font-size: 16px;
+	font-size: 14px;
+	font-weight: 400;
+	color: #fff;
 	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
 }
 
 .bx-worktime-prop p {
