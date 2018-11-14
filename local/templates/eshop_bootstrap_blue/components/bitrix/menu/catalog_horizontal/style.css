@@ -1,3 +1,13 @@
+.bx-top-nav {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 412px;
+	z-index: 10;
+	background: #fff;
+	padding: 15px 0 15px 12px;
+}
+
 .bx-top-nav-container {
 	margin-top: 15px;
 	/*padding: 0 10px;*/
@@ -13,37 +23,30 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
 }
 .bx-top-nav-container .bx-nav-1-lvl {
-	float: left;
 	position: relative;
-	width: 12.5%;
-	border-right: 1px solid #fff;
-	border-top: 1px solid #fff;
-	min-height: 80px;
+	min-height: 30px;
+	display: flex;
+	align-items: center;
+	margin: 0 0 2px;
 }
-
-.bx-top-nav-container .bx-nav-1-lvl:nth-child(8n) {
-	border-right: 0;
+.bx-top-nav-container .bx-nav-1-lvl:hover {
+	background: #3bd36e;
+}
+.bx-top-nav-container .bx-nav-1-lvl:last-child {
+	margin: 0;
 }
 .bx-top-nav-container .bx-nav-1-lvl>a {
-	color: #fff;
-	/*font-weight: 700;*/
+	flex-shrink: 0;
+	width: 100%;
 	display: block;
 	text-decoration: none;
-	/*text-transform: uppercase;*/
-	border-radius: 1px;
-	/*padding-top: 6px;*/
-	/*padding-bottom: 2px;*/
-	border-bottom: none;
-	padding: 10px;
 }
 .bx-top-nav-container .bx-nav-1-lvl>a span {
-	/*padding: 10px 14px 14px;*/
 	display: block;
-	font-size: 12px;
+	font-size: 16px;
+	color: #677a8e;
 }
 .bx-top-nav-container .bx-nav-1-lvl.bx-hover {}
 
@@ -63,15 +66,18 @@
 
 .bx-top-nav-container .bx-nav-2-lvl-container-advanced,
 .bx-top-nav-container .bx-nav-2-lvl-container {
+	position: absolute;
+	top: 0;
+	left: 100%;
 	z-index: 999;
 	display: none;
 	opacity: 0;
 	padding: 9px 0 5px;
-	box-shadow: 0 6px 13px 0 rgba(0, 0, 0, .13);
+	/*box-shadow: 0 6px 13px 0 rgba(0, 0, 0, .13);*/
 	border-top: none;
 	min-width: 100%;
-	color: #000;
-	background: #ffeab8;
+	color: #fff;
+	background: #3bd36e;
 }
 .bx-top-nav-container .bx-nav-2-lvl-container-advanced:before,
 .bx-top-nav-container .bx-nav-2-lvl-container:before {
@@ -368,10 +374,10 @@ body>.bx-aside-nav-control{
 .bx-nav-1-lvl.bx-opened,
 .bx-aside-nav .bx-nav-1-lvl:hover>a,
 .bx-aside-nav .bx-nav-1-lvl.bx-hover>a {
-	background: #44535c;
+	/*background: #44535c;*/
 }
 .bx-aside-nav .bx-nav-list-2-lvl {
-	background: #44535c;
+	/*background: #44535c;*/
 }
 .bx-aside-nav .bx-nav-2-lvl>a {
 	padding-left: 30px;

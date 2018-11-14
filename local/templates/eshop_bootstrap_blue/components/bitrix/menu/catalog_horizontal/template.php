@@ -23,7 +23,7 @@ if (file_exists($_SERVER["DOCUMENT_ROOT"].$this->GetFolder().'/themes/'.$arParam
 
 $menuBlockId = "catalog_menu_".$this->randString();
 ?>
-<div class="bx-top-nav bx-<?=$arParams["MENU_THEME"]?>" id="<?=$menuBlockId?>">
+<div class="bx-top-nav bx-<?=$arParams["MENU_THEME"]?>" id="<?=$menuBlockId?>" hidden>
 	<nav class="bx-top-nav-container" id="cont_<?=$menuBlockId?>">
 		<ul class="bx-nav-list-1-lvl" id="ul_<?=$menuBlockId?>">
 		<?foreach($arResult["MENU_STRUCTURE"] as $itemID => $arColumns):?>     <!-- first level-->
@@ -109,4 +109,21 @@ $menuBlockId = "catalog_menu_".$this->randString();
 	BX.ready(function () {
 		window.obj_<?=$menuBlockId?> = new BX.Main.Menu.CatalogHorizontal('<?=CUtil::JSEscape($menuBlockId)?>', <?=CUtil::PhpToJSObject($arResult["ITEMS_IMG_DESC"])?>);
 	});
+</script>
+
+<script>
+    (function () {
+        var button = document.querySelector('.bx-menu-top-button');
+        
+        button.addEventListener('click', function () {
+          var nav = document.querySelector('.bx-top-nav');
+
+          if (nav.hasAttribute('hidden')) {
+              nav.hidden = false;
+          } else {
+              nav.hidden = true;
+          }
+
+        })
+    })()
 </script>

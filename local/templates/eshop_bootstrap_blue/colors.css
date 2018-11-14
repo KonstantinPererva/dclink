@@ -24,16 +24,16 @@ a.bxd-block:hover .bxd-icon .fa {color: #fff;}
 	outline: none;
 	/*background-color: #1485CE;*/
 	/*border-color: #1485CE;*/
-	background-color: #009e00;
-	border-color: #009e00;
+	background-color: #3bd36e;
+	border-color: #3bd36e;
 	color: #FFF;
 }
 .bx-theme-blue .btn.btn-default:hover {
 	outline: none;
 	/*background-color: #53A4D8;*/
 	/*border-color: #53A4D8;*/
-	background-color: #00bd00;
-	border-color: #009e00;
+	background-color: #ffb400;
+	border-color: #ffb400;
 	color: #FFF;
 }
 .bx-theme-blue .btn.btn-default:active {

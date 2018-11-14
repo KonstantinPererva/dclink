@@ -2,41 +2,43 @@
 use Bitrix\Main\Page\Asset;
 
 ?>
-					</div>
-					<?if (!$hideSidebar):?>
-					<div class="col-md-3 col-sm-4 bx-content_right">
-            <div class="sidebar">
-              <?$APPLICATION->IncludeComponent(
-                "bitrix:main.include",
-                "",
-                Array(
-                  "AREA_FILE_SHOW" => "sect",
-                  "AREA_FILE_SUFFIX" => "sidebar",
-                  "AREA_FILE_RECURSIVE" => "Y",
-                  "EDIT_MODE" => "html",
-                ),
-                false,
-                Array('HIDE_ICONS' => 'Y')
-              );?>
-            </div><!--// sidebar -->
-					</div><!--// bx-content_right -->
-					<?endif?>
-          </div> <!--//page-container-->
-				</div><!--//row-->
-				<?$APPLICATION->IncludeComponent(
-					"bitrix:main.include",
-					"",
-					Array(
-						"AREA_FILE_SHOW" => "sect",
-						"AREA_FILE_SUFFIX" => "bottom",
-						"AREA_FILE_RECURSIVE" => "N",
-						"EDIT_MODE" => "html",
-					),
-					false,
-					Array('HIDE_ICONS' => 'Y')
-				);?>
-			</div><!--//container bx-content-seection-->
-		</div><!--//workarea-->
+            </div>
+            <?if (!$hideSidebar):?>
+            <div class="bx-content_right">
+              <div class="sidebar">
+                <?$APPLICATION->IncludeComponent(
+                  "bitrix:main.include",
+                  "",
+                  Array(
+                    "AREA_FILE_SHOW" => "sect",
+                    "AREA_FILE_SUFFIX" => "sidebar",
+                    "AREA_FILE_RECURSIVE" => "Y",
+                    "EDIT_MODE" => "html",
+                  ),
+                  false,
+                  Array('HIDE_ICONS' => 'Y')
+                );?>
+              </div><!--// sidebar -->
+            </div><!--// bx-content_right -->
+            <?endif?>
+            </div> <!--//page-container-->
+          </div><!--//row-->
+          <?$APPLICATION->IncludeComponent(
+            "bitrix:main.include",
+            "",
+            Array(
+              "AREA_FILE_SHOW" => "sect",
+              "AREA_FILE_SUFFIX" => "bottom",
+              "AREA_FILE_RECURSIVE" => "N",
+              "EDIT_MODE" => "html",
+            ),
+            false,
+            Array('HIDE_ICONS' => 'Y')
+          );?>
+        </div><!--//container bx-content-seection-->
+      </div><!--//workarea-->
+
+    </main><!--//main-->
 
 		<footer class="bx-footer">
 			<div class="bx-footer-line">

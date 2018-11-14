@@ -206,112 +206,168 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
         </div>
       </div>
     </div>
-		<div class="bx-header-section container">
-			<div class="bx-header-section-row">
-				<div class="hidden-xs bx-header-menu">
-					<?$APPLICATION->IncludeComponent(
-	"bitrix:menu",
-	"catalog_horizontal",
-	array(
-		"ROOT_MENU_TYPE" => "left",
-		"MENU_CACHE_TYPE" => "A",
-		"MENU_CACHE_TIME" => "36000000",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"MENU_THEME" => "green",
-		"CACHE_SELECTED_ITEMS" => "N",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MAX_LEVEL" => "4",
-		"CHILD_MENU_TYPE" => "left",
-		"USE_EXT" => "Y",
-		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "N",
-		"COMPONENT_TEMPLATE" => "catalog_horizontal"
-	),
-	false
-);?>
-				</div>
-			</div>
-			<?if ($curPage != SITE_DIR."index.php"):?>
-			<div class="row">
-				<div class="col-lg-12">
-					<?$APPLICATION->IncludeComponent(
-	"bitrix:search.title",
-	"visual",
-	array(
-		"NUM_CATEGORIES" => "1",
-		"TOP_COUNT" => "5",
-		"CHECK_DATES" => "N",
-		"SHOW_OTHERS" => "N",
-		"PAGE" => SITE_DIR."catalog/",
-		"CATEGORY_0_TITLE" => GetMessage("SEARCH_GOODS"),
-		"CATEGORY_0" => array(
-			0 => "iblock_catalog",
-		),
-		"CATEGORY_0_iblock_catalog" => array(
-			0 => "43",
-		),
-		"CATEGORY_OTHERS_TITLE" => GetMessage("SEARCH_OTHER"),
-		"SHOW_INPUT" => "Y",
-		"INPUT_ID" => "title-search-input",
-		"CONTAINER_ID" => "search",
-		"PRICE_CODE" => array(
-			0 => "BASE",
-		),
-		"SHOW_PREVIEW" => "Y",
-		"PREVIEW_WIDTH" => "75",
-		"PREVIEW_HEIGHT" => "75",
-		"CONVERT_CURRENCY" => "Y",
-		"COMPONENT_TEMPLATE" => "visual",
-		"ORDER" => "date",
-		"USE_LANGUAGE_GUESS" => "Y",
-		"PRICE_VAT_INCLUDE" => "Y",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"CURRENCY_ID" => "UAH"
-	),
-	false
-);?>
-				</div>
-			</div>
-			<?endif?>
 
-			<?
-			if ($curPage != SITE_DIR."index.php")
-			{
-			?>
-			<div class="row">
-				<div class="col-lg-12" id="navigation">
-					<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array(
-							"START_FROM" => "0",
-							"PATH" => "",
-							"SITE_ID" => "-"
-						),
-						false,
-						Array('HIDE_ICONS' => 'Y')
-					);?>
-				</div>
-			</div>
-			<h1 class="bx-title dbg_title" id="pagetitle"><?=$APPLICATION->ShowTitle(false);?></h1>
-			<?
-			}
-			else
-			{
-			?>
-			<h1 style="display: none"><?$APPLICATION->ShowTitle()?></h1>
-			<?
-			}
-			?>
-		</div>
 	</header>
 
-	<div class="workarea">
-		<div class="container bx-content-seection">
-			<div class="row">
-        <div class="page-container">
-			<?
-			$hideSidebar =
-				defined("HIDE_SIDEBAR") && HIDE_SIDEBAR == true
-				|| preg_match("~^".SITE_DIR."(catalog|personal\\/cart|personal\\/order\\/make)/~", $curPage)
-			? true : false;
-			?>
-				  <div class="bx-content <?=($hideSidebar ? "col-xs-12" : "col-md-9 col-sm-8")?> bx-content_left">
+  <main class="main">
+
+    <div class="workarea">
+      <div class="bx-content-seection">
+        <div class="bx-content-seection__row">
+          <div class="page-container">
+        <?
+        $hideSidebar =
+          defined("HIDE_SIDEBAR") && HIDE_SIDEBAR == true
+          || preg_match("~^".SITE_DIR."(catalog|personal\\/cart|personal\\/order\\/make)/~", $curPage)
+        ? true : false;
+        ?>
+            <div class="bx-content bx-content_left">
+
+              <div class="bx-content-top">
+                <div class="bx-content-top__row">
+                  <div class="bx-menu-top">
+                    <div class="bx-menu-top-button">
+                      <span class="bx-menu-top-button__ico">
+                        <svg class="bx-menu-top-button__svg" width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 16H24V19H0V16Z" fill="white"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 8H24V11H0V8Z" fill="white"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H24V3H0V0Z" fill="white"/>
+                        </svg>
+                      </span>
+
+                      <div class="bx-menu-top-button-title">
+                        <span class="bx-menu-top-button-title__text">каталог товаров</span>
+                      </div>
+                    </div>
+
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "catalog_horizontal",
+                        array(
+                            "ROOT_MENU_TYPE" => "left",
+                            "MENU_CACHE_TYPE" => "A",
+                            "MENU_CACHE_TIME" => "36000000",
+                            "MENU_CACHE_USE_GROUPS" => "Y",
+                            "MENU_THEME" => "green",
+                            "CACHE_SELECTED_ITEMS" => "N",
+                            "MENU_CACHE_GET_VARS" => array(
+                            ),
+                            "MAX_LEVEL" => "4",
+                            "CHILD_MENU_TYPE" => "left",
+                            "USE_EXT" => "Y",
+                            "DELAY" => "N",
+                            "ALLOW_MULTI_SELECT" => "N",
+                            "COMPONENT_TEMPLATE" => "catalog_horizontal"
+                        ),
+                        false
+                    );?>
+                  </div>
+
+                  <div class="bx-search-block">
+                      <?if ($APPLICATION->GetCurPage(true) == SITE_DIR."index.php"):?>
+
+                        <div class="">
+
+                            <?$APPLICATION->IncludeComponent("bitrix:search.title", "visual1", Array(
+                                "NUM_CATEGORIES" => "1",	// Количество категорий поиска
+                                "TOP_COUNT" => "5",	// Количество результатов в каждой категории
+                                "CHECK_DATES" => "N",	// Искать только в активных по дате документах
+                                "SHOW_OTHERS" => "N",	// Показывать категорию "прочее"
+                                "PAGE" => SITE_DIR."catalog/",	// Страница выдачи результатов поиска (доступен макрос #SITE_DIR#)
+                                "CATEGORY_0_TITLE" => "Товары",	// Название категории
+                                "CATEGORY_0" => array(	// Ограничение области поиска
+                                    0 => "iblock_catalog",
+                                ),
+                                "CATEGORY_0_iblock_catalog" => array(	// Искать в информационных блоках типа "iblock_catalog"
+                                    0 => "all",
+                                ),
+                                "CATEGORY_OTHERS_TITLE" => "Прочее",
+                                "SHOW_INPUT" => "Y",	// Показывать форму ввода поискового запроса
+                                "INPUT_ID" => "title-search-input",	// ID строки ввода поискового запроса
+                                "CONTAINER_ID" => "search",	// ID контейнера, по ширине которого будут выводиться результаты
+                                "PRICE_CODE" => array(	// Тип цены
+                                    0 => "BASE",
+                                ),
+                                "SHOW_PREVIEW" => "Y",	// Показать картинку
+                                "PREVIEW_WIDTH" => "75",	// Ширина картинки
+                                "PREVIEW_HEIGHT" => "75",	// Высота картинки
+                                "CONVERT_CURRENCY" => "Y",	// Показывать цены в одной валюте
+                            ),
+                                false
+                            );?>
+
+                        </div>
+
+                      <?endif?>
+                  </div>
+                </div>
+                  <?if ($curPage != SITE_DIR."index.php"):?>
+                    <div class="row">
+                      <div class="col-lg-12">
+                          <?$APPLICATION->IncludeComponent(
+                              "bitrix:search.title",
+                              "visual",
+                              array(
+                                  "NUM_CATEGORIES" => "1",
+                                  "TOP_COUNT" => "5",
+                                  "CHECK_DATES" => "N",
+                                  "SHOW_OTHERS" => "N",
+                                  "PAGE" => SITE_DIR."catalog/",
+                                  "CATEGORY_0_TITLE" => GetMessage("SEARCH_GOODS"),
+                                  "CATEGORY_0" => array(
+                                      0 => "iblock_catalog",
+                                  ),
+                                  "CATEGORY_0_iblock_catalog" => array(
+                                      0 => "43",
+                                  ),
+                                  "CATEGORY_OTHERS_TITLE" => GetMessage("SEARCH_OTHER"),
+                                  "SHOW_INPUT" => "Y",
+                                  "INPUT_ID" => "title-search-input",
+                                  "CONTAINER_ID" => "search",
+                                  "PRICE_CODE" => array(
+                                      0 => "BASE",
+                                  ),
+                                  "SHOW_PREVIEW" => "Y",
+                                  "PREVIEW_WIDTH" => "75",
+                                  "PREVIEW_HEIGHT" => "75",
+                                  "CONVERT_CURRENCY" => "Y",
+                                  "COMPONENT_TEMPLATE" => "visual",
+                                  "ORDER" => "date",
+                                  "USE_LANGUAGE_GUESS" => "Y",
+                                  "PRICE_VAT_INCLUDE" => "Y",
+                                  "PREVIEW_TRUNCATE_LEN" => "",
+                                  "CURRENCY_ID" => "UAH"
+                              ),
+                              false
+                          );?>
+                      </div>
+                    </div>
+                  <?endif?>
+
+                  <?
+                  if ($curPage != SITE_DIR."index.php")
+                  {
+                      ?>
+                    <div class="row">
+                      <div class="col-lg-12" id="navigation">
+                          <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array(
+                              "START_FROM" => "0",
+                              "PATH" => "",
+                              "SITE_ID" => "-"
+                          ),
+                              false,
+                              Array('HIDE_ICONS' => 'Y')
+                          );?>
+                      </div>
+                    </div>
+                    <h1 class="bx-title dbg_title" id="pagetitle"><?=$APPLICATION->ShowTitle(false);?></h1>
+                      <?
+                  }
+                  else
+                  {
+                      ?>
+                    <h1 style="display: none"><?$APPLICATION->ShowTitle()?></h1>
+                      <?
+                  }
+                  ?>
+              </div>
