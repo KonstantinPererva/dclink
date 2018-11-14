@@ -63,7 +63,7 @@
 	display: inline-block;
 	vertical-align: top;
 	text-decoration: underline;
-	color: #2db30c;
+	color: #3bd36e;
 }
 
 .button-see-more:hover,
@@ -71,7 +71,7 @@
 .button-see-more:focus {
 	text-decoration: none;
 	outline: none;
-	color: #2db30c;
+	color: #ffb400;
 }
 
 .button-see-more__text {

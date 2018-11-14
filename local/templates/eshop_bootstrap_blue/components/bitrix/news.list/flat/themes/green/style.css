@@ -4,12 +4,12 @@
 }
 /*BTN*/
 .bx-newslist .btn {
-	background-color: #2db30c;
-	border-color: #2db30c;
+	background-color: #3bd36e;
+	border-color: #3bd36e;
 }
 .bx-newslist .btn:active,
 .bx-newslist .btn:hover {
-	background-color: #1c9000;
-	border-color: #1c9000;
+	background-color: #ffb400;
+	border-color: #ffb400;
 	outline: none;
 }

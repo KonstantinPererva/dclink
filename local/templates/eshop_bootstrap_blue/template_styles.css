@@ -430,7 +430,7 @@ img {
 
 .bx-content_right {
 	width: 277px;
-	padding: 0 0 30px;
+	padding: 0 0 0 30px;
 }
 
 @media (min-width: 1200px) {
@@ -650,6 +650,12 @@ img {
 .bx-sidebar-block {
 	margin-bottom: 40px;
 }
+.bx-sidebar-block_banner {
+	margin-bottom: 125px;
+}
+.bx-sidebar-block_socnet {
+	margin-bottom: 20px;
+}
 .bx-block-title {
 	font-family: "Open Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
 	color: #343434;
@@ -864,7 +870,7 @@ textarea {
 /*sidebar*/
 .sidebar {
 	width: 247px;
-	float: right;
+	padding: 22px 0;
 }
 
 /* news.list.sidebar */
@@ -1342,7 +1348,7 @@ a.bxd-block:hover {}
 
 .news-banner-title {
     display: block;
-    background: #009e00;
+    background: #3bd36e;
     height: 42px;
     line-height: 42px;
     padding: 0 15px;
@@ -1354,4 +1360,83 @@ a.bxd-block:hover {}
     font-family: "Roboto",sans-serif;
     font-weight: 300;
     margin: 0 0 35px;
+}
+
+.bx-socialsidebar .bx-block-title,
+.bx-subscribe div.bx-block-title {
+	color: #3bd36e;
+	font-weight: 700;
+	font-size: 14px;
+	font-family: "Roboto", sans-serif;
+}
+
+.bx-socialsidebar-group ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/*banner-sidebar*/
+.banner-sidebar {
+	background: #566576;
+	padding: 35px 22px 0;
+}
+
+.banner-sidebar__ico-wrap {
+	width: 83px;
+	height: 83px;
+	background: #3bd36e;
+	border-radius: 50%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.banner-sidebar-title {
+	display: block;
+	line-height: 21px;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 0;
+	padding: 20px 0;
+}
+
+.banner-sidebar-title__text {
+	font-family: "Roboto", sans-serif;
+	font-size: 18px;
+	color: #fff;
+}
+
+.banner-sidebar-block {
+	padding: 0 0 22px;
+}
+
+.banner-sidebar-block-title {
+	display: block;
+	background: #3bd36e;
+	line-height: 19px;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 0;
+	padding: 8px 10px;
+}
+.banner-sidebar-block-title__text {
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	color: #fff;
+}
+
+.banner-sidebar-block-descr {
+	display: block;
+	margin: 0;
+	padding: 10px 0 0;
+}
+.banner-sidebar-block-descr__text {
+	font-family: "Roboto", sans-serif;
+	font-size: 12px;
+	color: #fff;
 }
