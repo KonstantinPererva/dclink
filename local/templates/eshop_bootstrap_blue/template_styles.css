@@ -943,7 +943,7 @@ textarea {
 }
 
 .bx-footer-section.bx-center-section {
-	padding-top: 40px;
+	padding-top: 24px;
 	padding-bottom: 40px;
 }
 
@@ -1466,4 +1466,40 @@ a.bxd-block:hover {}
 	flex-grow: 1;
 	padding: 0 0 0 3px;
 	transition: .15s;
+}
+
+/*footer-menu*/
+.footer-menu {
+	padding: 0 0 40px;
+}
+.footer-menu-list {
+	margin: 0;
+	padding: 0 0 15px;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #c5c8cd;
+}
+
+.footer-menu-list__item {
+	margin: 0 20px 0 0;
+}
+
+.bx-footer a.footer-menu-link {
+	display: block;
+	text-decoration: none;
+	color: #c5c8cd;
+	border: 0;
+}
+
+.bx-footer a.footer-menu-link:hover {
+	text-decoration: none;
+	color: #fff;
+	border: 0;
+}
+
+.footer-menu-link__text {
+	font-size: 14px;
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
 }
