@@ -21,6 +21,7 @@ use Bitrix\Main\Page\Asset;
               </div><!--// sidebar -->
             </div><!--// bx-content_right -->
             <?endif?>
+
             </div> <!--//page-container-->
           </div><!--//row-->
           <?$APPLICATION->IncludeComponent(

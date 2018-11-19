@@ -104,7 +104,7 @@ if ($isFilter || $isSidebar): ?>
 		<?endif?>
 	</div>
 <?endif?>
-<div class="<?=(($isFilter || $isSidebar) ? "col-md-9 col-sm-8 col-sm-pull-4 col-md-pull-3" : "col-xs-12")?>">
+  <div class="<?=(($isFilter || $isSidebar) ? "col-md-9 col-sm-8 col-sm-pull-4 col-md-pull-3" : "col-xs-12")?>">
 	<div class="row">
 		<div class="col-xs-12">
 			<?

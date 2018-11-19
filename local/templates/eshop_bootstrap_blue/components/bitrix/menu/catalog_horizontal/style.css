@@ -7,8 +7,11 @@
 	z-index: 1000;
 	background: #fff;
 	padding: 15px 0 15px 12px;
+	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .13);
 }
-
+.bx-nav-2-lvl-container {
+	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .13);
+}
 .bx-top-nav-container {
 	margin-top: 15px;
 	color: #fff;
