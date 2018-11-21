@@ -822,7 +822,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-8 col-md-9">
+			<div class="">
 				<div class="row" id="<?=$itemIds['TABS_ID']?>">
 					<div class="col-xs-12">
 						<div class="product-item-detail-tabs-container">

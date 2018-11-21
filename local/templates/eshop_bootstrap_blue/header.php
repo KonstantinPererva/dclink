@@ -299,11 +299,9 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
                         </div>
 
                       <?endif?>
-                  </div>
-                </div>
-                  <?if ($curPage != SITE_DIR."index.php"):?>
-                    <div class="row">
-                      <div class="col-lg-12">
+
+                      <?if ($curPage != SITE_DIR."index.php"):?>
+                        <div class="">
                           <?$APPLICATION->IncludeComponent(
                               "bitrix:search.title",
                               "visual",
@@ -340,9 +338,10 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
                               ),
                               false
                           );?>
-                      </div>
-                    </div>
-                  <?endif?>
+                        </div>
+                      <?endif?>
+                  </div>
+                </div>
 
                   <?
                   if ($curPage != SITE_DIR."index.php")

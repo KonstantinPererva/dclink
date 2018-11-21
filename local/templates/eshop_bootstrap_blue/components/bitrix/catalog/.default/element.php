@@ -29,8 +29,8 @@ else
 
 $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEBAR_PATH']));
 ?>
-<div class='row'>
-	<div class='<?=($isSidebar ? 'col-md-9 col-sm-8' : 'col-xs-12')?>'>
+<div class=''>
+	<div class='<?=($isSidebar ? '' : '')?>'>
 		<?
 		if ($arParams["USE_COMPARE"] === "Y")
 		{
@@ -686,8 +686,10 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 		}
 		?>
 	</div>
+</div>
+</div>
 	<? if ($isSidebar): ?>
-		<div class='col-md-3 col-sm-4'>
+		<div class='bx-content_right'>
 			<?
 			$APPLICATION->IncludeComponent(
 				'bitrix:main.include',
