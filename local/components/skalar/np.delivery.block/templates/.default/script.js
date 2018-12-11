@@ -20,6 +20,7 @@ $(document).ready(function(){
 	;
 });
 function chooseCityFromList(){
+	var $this = $(this);
 	var opt = $("#loc_var option:selected").val();
 	var pos = opt.indexOf(" ");
 	var location = opt.substr(0,pos);
@@ -27,7 +28,9 @@ function chooseCityFromList(){
 	$("#city_select").val(location);
 	$(this).slideUp("slow");
 	$("#loc_var-styler").slideUp("slow");
+	$this.parents(".modal").modal('hide');;
 }
+
 function limitHeightDropList(){
 	$("#npost_wares div.jq-selectbox__dropdown ul").css("height","200px");
 	$("#npost_wares div.jq-selectbox__dropdown ul").css("overflow-y","scroll");
@@ -37,19 +40,21 @@ function chooseCityInPopup(){
 		city = $this.text();
 	$('#city_select').val(city);
 	$('.city-click').text(city);
-	console.log(222);
-	console.log(city);
-	console.log($('.city-click').text());
+	//console.log(222);
+	//console.log(city);
+	//console.log($('.city-click').text());
 	getNewPost();
 	if($('.city-click').text() == 'ХарьковХарьков'){
 		$('.pickup').show();
 	} else {
 		$('.pickup').hide();
 	}
+	$this.parents(".modal").modal('hide');;
 	return false;
 }
 function chooseNasPunkt(){
 	if(typeof $(this).parents("#loc_var-styler").attr("id") != "undefined"){
+		var $this = $(this);
 		var opt = $(this).text();
 		var pos = opt.indexOf(" ");
 		var location = opt.substr(0,pos);
@@ -61,8 +66,9 @@ function chooseNasPunkt(){
 		} else {
 			$('.pickup').hide();
 		}
-		console.log(111);
+		//console.log(111);
 		getNewPost();
+		$this.parents(".modal").modal('hide');;
 	}
 }
 function getCity(){
@@ -114,19 +120,10 @@ function getCity(){
 		$("#loc_var-styler").hide();
 	}
 }
-function chooseCityFromList(){
-	var opt = $("#loc_var option:selected").val();
-	var pos = opt.indexOf(" ");
-	var location = opt.substr(0,pos);
-	userLocID = $(this).attr("data-locid");
-	$("#city_select").val(location);
-	$(this).slideUp("slow");
-	$("#loc_var-styler").slideUp("slow");
-}
 function getNewPost(){
 	var city = $(".city-click").first().text();
 	var productId = $("body").find(".colm.delivery").data('product-id');
-	console.log(333);
+	//console.log(333);
 	$.ajax({
 		url: "/local/ajax/np_data.php",
 		type: "POST",
@@ -137,7 +134,7 @@ function getNewPost(){
 		},
 		//dataType: "json",
 		success: function (response) {
-			console.log("script dd");
+			//console.log("script dd");
 			$('.colm.delivery').replaceWith(response);
 		}
 	});

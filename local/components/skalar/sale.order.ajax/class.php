@@ -653,6 +653,12 @@ class SaleOrderAjax extends \CBitrixComponent
 		$orderProperties = $this->getPropertyValuesFromRequest();
 		$orderProperties = $this->addLastLocationPropertyValues($orderProperties);
 
+		// Если заполнен склад Новой почты, добавим его в свойство заказа
+		if(!empty($_POST["order"]["warehouses"]))
+			$orderProperties[27] = $_POST["order"]["warehouses"];
+		if(!empty($_POST["warehouses"]))
+			$orderProperties[27] = $_POST["warehouses"];
+
 		$this->initUserProfiles($order, $isPersonTypeChanged);
 
 		$firstLoad = $this->request->getRequestMethod() === 'GET';
@@ -3587,7 +3593,6 @@ class SaleOrderAjax extends \CBitrixComponent
 				$shipment->setExtraServices($deliveryExtraServices[$deliveryId]);
 				$deliveryObj->getExtraServices()->setValues($deliveryExtraServices[$deliveryId]);
 			}
-
 			$shipmentCollection->calculateDelivery();
 
 			$order->doFinalAction(true);
@@ -4164,6 +4169,7 @@ class SaleOrderAjax extends \CBitrixComponent
 						$arDelivery['PRICE_FORMATED'] = SaleFormatCurrency($arDelivery['PRICE'], $calcOrder->getCurrency());
 
 						$currentCalcDeliveryPrice = Sale\PriceMaths::roundPrecision($calcOrder->getDeliveryPrice());
+
 						if ($currentCalcDeliveryPrice >= 0 && $arDelivery['PRICE'] != $currentCalcDeliveryPrice)
 						{
 							$arDelivery['DELIVERY_DISCOUNT_PRICE'] = $currentCalcDeliveryPrice;
@@ -4383,7 +4389,7 @@ class SaleOrderAjax extends \CBitrixComponent
 	protected function saveOrderAjaxAction()
 	{
 		global $USER;
-
+		//print_log("saveOrderAjaxAction", "/log/order.txt");
 		$arOrderRes = array();
 		if ($this->checkSession)
 		{
@@ -4399,8 +4405,10 @@ class SaleOrderAjax extends \CBitrixComponent
 			{
 				$userId = $USER->GetID() ? $USER->GetID() : CSaleUser::GetAnonymousUserID();
 			}
+			//print_log("before createOrder", "/log/order.txt");
 
 			$this->order = $this->createOrder($userId);
+			//print_log("after createOrder", "/log/order.txt");
 
 			$isActiveUser = intval($userId) > 0 && $userId != CSaleUser::GetAnonymousUserID();
 
@@ -4420,6 +4428,7 @@ class SaleOrderAjax extends \CBitrixComponent
 
 				$this->saveOrder($saveToSession);
 			}
+			//print_log("after saveOrder", "/log/order.txt");
 
 			if (empty($this->arResult["ERROR"]))
 			{
@@ -4435,6 +4444,8 @@ class SaleOrderAjax extends \CBitrixComponent
 		{
 			$arOrderRes["ERROR"]['MAIN'] = Loc::getMessage('SESSID_ERROR');
 		}
+		//print_log($arOrderRes, "/log/order.txt");
+		//print_log($this->arResult, "/log/order.txt");
 
 		$this->showAjaxAnswer(array('order' => $arOrderRes));
 	}
@@ -4650,23 +4661,35 @@ class SaleOrderAjax extends \CBitrixComponent
 		$result['INNER_PAY_SYSTEM'] = $arResult["INNER_PAY_SYSTEM"];
 		$result['DELIVERY'] = $arResult["DELIVERY"];
 
+		//print_log("getJsDataResult", "/log/order.txt");
 		//print_log("DELIVERY", "/log/order.txt");
 		//print_log($this->arUserResult, "/log/order.txt");
 		//print_log($arResult, "/log/order.txt");
 		if(!empty($this->arUserResult["ORDER_PROP"][6])){
 			$arLocs = CSaleLocation::GetByID($this->arUserResult["ORDER_PROP"][6], LANGUAGE_ID);
+			$result["CITY"] = $arLocs["CITY_NAME"];
 		}
 		foreach ($result['DELIVERY'] as &$delivery)
 		{
 			//print_log($delivery, "/log/order.txt");
+			// Получаем стоимость доставки
 			if($delivery["ID"] == 5 || $delivery["ID"] == 6){
-				//$delivery["WAREHOUSES"] =
 				$delivery = self::getWarehouses($delivery, $arLocs);
-				if(!empty($delivery["COST"])){
+				if(!empty($delivery["COST"]) && $delivery["CHECKED"] == "Y"){
+					$arResult["COST"] = $delivery["COST"];
+					/*
 					$delivery["PRICE"] = $delivery["COST"];
 					$delivery["PRICE_FORMATED"] = CurrencyFormat($delivery["COST"], $delivery["CURRENCY"]);
 					$arResult["DELIVERY_PRICE"] = $delivery["COST"];
 					$arResult["DELIVERY_PRICE_FORMATED"] = CurrencyFormat($delivery["COST"], $delivery["CURRENCY"]);
+					$arResult["ORDER_TOTAL_PRICE"] = $arResult["ORDER_PRICE"] + $arResult["DELIVERY_PRICE"];
+					$arResult["ORDER_TOTAL_PRICE_FORMATED"] = CurrencyFormat($arResult["ORDER_PRICE"] + $arResult["DELIVERY_PRICE"], $delivery["CURRENCY"]);
+					$result["COST"] = $delivery["COST"];
+					$result["DELIVERY_PRICE"] = $delivery["COST"];
+					$result["DELIVERY_PRICE_FORMATED"] = CurrencyFormat($delivery["COST"], $delivery["CURRENCY"]);
+					$result["ORDER_TOTAL_PRICE"] = $result["ORDER_PRICE"] + $result["DELIVERY_PRICE"];
+					$result["ORDER_TOTAL_PRICE_FORMATED"] = CurrencyFormat($result["ORDER_PRICE"] + $result["DELIVERY_PRICE"], $delivery["CURRENCY"]);
+					*/
 				}
 			}
 			if (!empty($delivery['EXTRA_SERVICES']))
@@ -5120,6 +5143,9 @@ class SaleOrderAjax extends \CBitrixComponent
 		$this->executeEvent('OnSaleComponentOrderOneStepProcess', $this->order);
 		$this->arResult['USER_VALS'] = $this->arUserResult;
 
+		//print_log("prepareResultArray", "/log/order.txt");
+		//print_log($this->arResult, "/log/order.txt");
+
 		//try to avoid use "executeEvent" methods and use new events like this
 		foreach (GetModuleEvents("sale", 'OnSaleComponentOrderResultPrepared', true) as $arEvent)
 			ExecuteModuleEventEx($arEvent, array($this->order, &$this->arUserResult, $this->request, &$this->arParams, &$this->arResult));
@@ -5545,10 +5571,12 @@ class SaleOrderAjax extends \CBitrixComponent
 		// $this->arUserResult['RECREATE_ORDER'] - flag for full order recalculation after events manipulations
 		if ($this->arUserResult['RECREATE_ORDER'])
 			$order = $this->getOrder($userId);
+		//print_log("after getOrder", "/log/order.txt");
 
 		// $this->arUserResult['CALCULATE_PAYMENT'] - flag for order payments recalculation after events manipulations
 		if ($this->arUserResult['CALCULATE_PAYMENT'])
 			$this->recalculatePayment($order);
+		//print_log("after recalculatePayment", "/log/order.txt");
 
 		return $order;
 	}
@@ -5619,6 +5647,9 @@ class SaleOrderAjax extends \CBitrixComponent
 		{
 			$this->calculateDeliveries($order);
 		}
+
+		//print_log("getOrder", "/log/order.txt");
+		//print_log($this->arResult, "/log/order.txt");
 
 		return $order;
 	}
@@ -5828,9 +5859,11 @@ class SaleOrderAjax extends \CBitrixComponent
 		{
 			$userId = CSaleUser::GetAnonymousUserID();
 		}
-
+		//print_log("processOrderAction", "/log/order.txt");
 		$this->order = $this->createOrder($userId);
+		//print_log("after createOrder", "/log/order.txt");
 		$this->prepareResultArray();
+		//print_log("after prepareResultArray", "/log/order.txt");
 
 		$isActiveUser = intval($userId) > 0 && $userId != CSaleUser::GetAnonymousUserID();
 		if ($this->isOrderConfirmed && $isActiveUser && empty($arResult["ERROR"]))
@@ -5857,6 +5890,7 @@ class SaleOrderAjax extends \CBitrixComponent
 		{
 			$arResult["USER_VALS"]["CONFIRM_ORDER"] = "N";
 		}
+		//print_log("end processOrderAction", "/log/order.txt");
 	}
 
 	/**

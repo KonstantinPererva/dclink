@@ -28,6 +28,7 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
     <div class="bx-header__inner">
       <div class="container">
         <div class="row">
+
           <div class="bx-header-hold">
             <div class="bx-header-hold__left">
               <div class="bx-logo-wrapper">
@@ -303,41 +304,41 @@ $theme = COption::GetOptionString("main", "wizard_eshop_bootstrap_theme_id", "bl
                       <?if ($curPage != SITE_DIR."index.php"):?>
                         <div class="">
                           <?$APPLICATION->IncludeComponent(
-                              "bitrix:search.title",
-                              "visual",
-                              array(
-                                  "NUM_CATEGORIES" => "1",
-                                  "TOP_COUNT" => "5",
-                                  "CHECK_DATES" => "N",
-                                  "SHOW_OTHERS" => "N",
-                                  "PAGE" => SITE_DIR."catalog/",
-                                  "CATEGORY_0_TITLE" => GetMessage("SEARCH_GOODS"),
-                                  "CATEGORY_0" => array(
-                                      0 => "iblock_catalog",
-                                  ),
-                                  "CATEGORY_0_iblock_catalog" => array(
-                                      0 => "43",
-                                  ),
-                                  "CATEGORY_OTHERS_TITLE" => GetMessage("SEARCH_OTHER"),
-                                  "SHOW_INPUT" => "Y",
-                                  "INPUT_ID" => "title-search-input",
-                                  "CONTAINER_ID" => "search",
-                                  "PRICE_CODE" => array(
-                                      0 => "BASE",
-                                  ),
-                                  "SHOW_PREVIEW" => "Y",
-                                  "PREVIEW_WIDTH" => "75",
-                                  "PREVIEW_HEIGHT" => "75",
-                                  "CONVERT_CURRENCY" => "Y",
-                                  "COMPONENT_TEMPLATE" => "visual",
-                                  "ORDER" => "date",
-                                  "USE_LANGUAGE_GUESS" => "Y",
-                                  "PRICE_VAT_INCLUDE" => "Y",
-                                  "PREVIEW_TRUNCATE_LEN" => "",
-                                  "CURRENCY_ID" => "UAH"
-                              ),
-                              false
-                          );?>
+	"bitrix:search.title",
+	"visual",
+	array(
+		"NUM_CATEGORIES" => "1",
+		"TOP_COUNT" => "5",
+		"CHECK_DATES" => "N",
+		"SHOW_OTHERS" => "N",
+		"PAGE" => SITE_DIR."catalog/",
+		"CATEGORY_0_TITLE" => GetMessage("SEARCH_GOODS"),
+		"CATEGORY_0" => array(
+			0 => "iblock_catalog",
+		),
+		"CATEGORY_0_iblock_catalog" => array(
+			0 => "43",
+		),
+		"CATEGORY_OTHERS_TITLE" => GetMessage("SEARCH_OTHER"),
+		"SHOW_INPUT" => "Y",
+		"INPUT_ID" => "title-search-input",
+		"CONTAINER_ID" => "search",
+		"PRICE_CODE" => array(
+			0 => "BASE",
+		),
+		"SHOW_PREVIEW" => "Y",
+		"PREVIEW_WIDTH" => "75",
+		"PREVIEW_HEIGHT" => "75",
+		"CONVERT_CURRENCY" => "Y",
+		"COMPONENT_TEMPLATE" => "visual",
+		"ORDER" => "date",
+		"USE_LANGUAGE_GUESS" => "Y",
+		"PRICE_VAT_INCLUDE" => "Y",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"CURRENCY_ID" => "UAH"
+	),
+	false
+);?>
                         </div>
                       <?endif?>
                   </div>

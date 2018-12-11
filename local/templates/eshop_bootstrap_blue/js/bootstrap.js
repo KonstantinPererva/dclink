@@ -924,8 +924,8 @@ if (typeof jQuery === 'undefined') {
   // ======================
 
   var Modal = function (element, options) {
-    console.log(element);
-    console.log(options);
+    //console.log(element);
+    //console.log(options);
     this.options             = options
     this.$body               = $(document.body)
     this.$element            = $(element)
@@ -1048,7 +1048,7 @@ if (typeof jQuery === 'undefined') {
       this.hideModal()
 
     $("body").find(".delivery-select option:first-child").prop('selected', true);
-    console.log("close modal");
+    //console.log("close modal");
   }
 
   Modal.prototype.enforceFocus = function () {

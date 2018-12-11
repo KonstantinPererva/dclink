@@ -115,14 +115,12 @@ while ($arItems = $dbBasketItems->Fetch()){
 	//if(floatval($arItems["mass_dim"]["WEIGHT"]) < 0.1) $arItems["mass_dim"]["WEIGHT"]=0.1;
 	$arItems["mass_dim"]["WEIGHT"]=0.1;
 	$arBasketItems[] = $arItems;
-	//print_log($arItems["QUANTITY"]." * ".$arItems["PRICE"]." = ".($arItems["QUANTITY"]*$arItems["PRICE"]));
 	$totalPrice+=($arItems["QUANTITY"]*$arItems["PRICE"]);
 	$totalWeight+=($arItems["QUANTITY"]*$arItems["mass_dim"]["WEIGHT"]);
 	//$totalVolume+=($arItems["mass_dim"]["WIDTH"]*$arItems["mass_dim"]["HEIGHT"]*$arItems["mass_dim"]["LENGTH"]/1000)*$arItems["QUANTITY"];
 	$totalVolume = 0;
 	//print_all($arItems);
 }
-//print_log($totalPrice);
 
 /*$arSelect = array("ID", "NAME", "IBLOCK_SECTION_ID", "CATALOG_WEIGHT");
 $res = CIBlockElement::getList(array('SORT' => 'ASC', 'ID' => 'DESC'), array('ID' => $ELEMENT_ID), false, false, $arSelect);
@@ -183,11 +181,6 @@ if($arCity["success"]==1 && !empty($cityRef) && empty($arCity["error"])){
 		$senderStr
 	);
 
-	print_log("WarehouseWarehouse");
-	print_log($totalWeight);
-	print_log($totalPrice);
-	print_log($price);
-
 	$arResult["WW"]["WareHouses"] = (isset($arWareHouses["data"])) ? $arWareHouses["data"] : "empty";
 	$arResult["WW"]["cost"] = !empty($price["data"]) ? $price["data"][0]["Cost"] : 0;
 
@@ -210,11 +203,6 @@ if($arCity["success"]==1 && !empty($cityRef) && empty($arCity["error"])){
 		$totalPrice,
 		$senderStr
 	);
-
-	print_log("DoorsDoors");
-	print_log($totalWeight);
-	print_log($totalPrice);
-	print_log($price);
 
 	$arResult["DD"]["WareHouses"] = (isset($arWareHouses["data"])) ? $arWareHouses["data"] : "empty";
 	$arResult["DD"]["cost"] = !empty($price["data"]) ? $price["data"][0]["Cost"] : 0;

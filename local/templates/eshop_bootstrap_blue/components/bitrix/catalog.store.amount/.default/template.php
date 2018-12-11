@@ -16,15 +16,21 @@ if(!empty($arResult["STORES"]) && $arParams["MAIN_TITLE"] != '' && $arResult["ST
 
 <div class="bx_storege" id="catalog_store_amount_div">
 	<?if(!empty($arResult["STORES"])):?>
-	<hr><ul id="c_store_amount">
+	<ul id="c_store_amount">
 		<?foreach($arResult["STORES"] as $pid => $arProperty):?>
 
-            <?if($arProperty["ID"] !== "6"):?>
+			<?//if($arProperty["ID"] !== "6"):?>
 			<li style="display: <? echo ($arParams['SHOW_EMPTY_STORE'] == 'N' && isset($arProperty['REAL_AMOUNT']) && $arProperty['REAL_AMOUNT'] <= 0 ? 'none' : ''); ?>;">
 				<?if (isset($arProperty["TITLE"])):?>
-					<a href="<?=$arProperty["URL"]?>"> <?=$arProperty["TITLE"]?></a><br />
+					<?/*?>
+					<a href="<?=$arProperty["URL"]?>">
+					<?*/?>
+						<?=GetMessage('S_STORE_TITLE')?> "<?=$arProperty["TITLE"]?>":
+					<?/*?>
+					</a><br />
+					<?*/?>
 				<?endif;?>
-				<?if (isset($arProperty["IMAGE_ID"]) && !empty($arProperty["IMAGE_ID"])):?>
+				<?/*if (isset($arProperty["IMAGE_ID"]) && !empty($arProperty["IMAGE_ID"])):?>
 					<span class="schedule"><?=GetMessage('S_IMAGE')?> <?=CFile::ShowImage($arProperty["IMAGE_ID"], 200, 200, "border=0", "", true);?></span><br />
 				<?endif;?>
 				<?if (isset($arProperty["PHONE"])):?>
@@ -47,9 +53,17 @@ if(!empty($arResult["STORES"]) && $arParams["MAIN_TITLE"] != '' && $arResult["ST
 				<?else:?>
 					<?=GetMessage('S_AMOUNT')?>
 				<?endif;?>
+				<?*/?>
+				<?if($arProperty["AMOUNT"] <= 5):?>
+					<span class="balance" id="<?=$arResult['JS']['ID']?>_<?=$arProperty['ID']?>"><?=GetMessage('S_AMOUNT_LESS')?></span><br />
+				<?else:?>
+					<span class="balance" id="<?=$arResult['JS']['ID']?>_<?=$arProperty['ID']?>"><?=GetMessage('S_AMOUNT_MORE')?></span><br />
+				<?endif;?>
+				<?/*?>
 				<span class="balance" id="<?=$arResult['JS']['ID']?>_<?=$arProperty['ID']?>"><?=$arProperty["AMOUNT"]?></span><br />
+				<?*/?>
 				<?
-				if (!empty($arProperty['USER_FIELDS']) && is_array($arProperty['USER_FIELDS']))
+				/*if (!empty($arProperty['USER_FIELDS']) && is_array($arProperty['USER_FIELDS']))
 				{
 					foreach ($arProperty['USER_FIELDS'] as $userField)
 					{
@@ -58,10 +72,10 @@ if(!empty($arResult["STORES"]) && $arParams["MAIN_TITLE"] != '' && $arResult["ST
 							?><span><?=$userField['TITLE']?>: <?=$userField['CONTENT']?></span><br /><?
 						}
 					}
-				}
+				}*/
 				?>
 			</li>
-            <?endif;?>
+			<?//endif;?>
 
 		<?endforeach;?>
 		</ul>

@@ -9,7 +9,7 @@ $component = $this->getComponent();
 $arParams = $component->applyTemplateModifications();
 
 
-$pictureList = \Expertit\SkalarShopBase\Picture::getData($arResult["PROPERTIES"]["CML2_TRAITS"]["VALUE"][3]);
+/*$pictureList = \Expertit\SkalarShopBase\Picture::getData($arResult["PROPERTIES"]["CML2_TRAITS"]["VALUE"][3]);
 
 $arResult["MORE_PHOTO"] = [];
 
@@ -22,7 +22,7 @@ if (sizeof($pictureList)) {
     }
 
     $arResult['MORE_PHOTO_COUNT'] = sizeof($pictureList);
-}
+}*/
 
 $rsStore = \Bitrix\Catalog\StoreProductTable::getList(array(
     'filter' => array('=PRODUCT_ID'=>$arResult["ID"],'STORE.ACTIVE'=>'Y'),
@@ -43,3 +43,13 @@ $arResult["STORE_COUNT"] = $store_count;
 $key = array_search("Код SQL", $arResult["PROPERTIES"]["CML2_TRAITS"]["DESCRIPTION"]);
 
 $arResult["SQL_CODE"] = $arResult["PROPERTIES"]["CML2_TRAITS"]["VALUE"][$key];
+
+if(!empty($arResult["PROPERTIES"]["MORE_PHOTO"]["VALUE"])){
+	foreach($arResult["PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $key=>$arPhoto){
+		$arResult["MORE_PHOTO"][] = [
+			"SRC" => CFile::GetPath($arPhoto),
+			"ID" => $key
+		];
+	}
+	$arResult['MORE_PHOTO_COUNT'] = sizeof($arResult["MORE_PHOTO"]);
+}

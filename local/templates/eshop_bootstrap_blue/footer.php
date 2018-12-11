@@ -78,37 +78,22 @@ use Bitrix\Main\Page\Asset;
           <div class="bx-footer-section__item bx-footer-section__item_left">
             <div class="bx-footer-menu">
               <div class="footer-menu">
-                <ul class="footer-menu-list">
-                  <li class="footer-menu-list__item">
-                    <a href="#" class="footer-menu-link">
-                      <span class="footer-menu-link__text">О нас</span>
-                    </a>
-                  </li>
-
-                  <li class="footer-menu-list__item">
-                    <a href="#" class="footer-menu-link">
-                      <span class="footer-menu-link__text">Акции</span>
-                    </a>
-                  </li>
-
-                  <li class="footer-menu-list__item">
-                    <a href="#" class="footer-menu-link">
-                      <span class="footer-menu-link__text">Доставка</span>
-                    </a>
-                  </li>
-
-                  <li class="footer-menu-list__item">
-                    <a href="#" class="footer-menu-link">
-                      <span class="footer-menu-link__text">Новости</span>
-                    </a>
-                  </li>
-
-                  <li class="footer-menu-list__item">
-                    <a href="#" class="footer-menu-link">
-                      <span class="footer-menu-link__text">Статьи</span>
-                    </a>
-                  </li>
-                </ul>
+                <?$APPLICATION->IncludeComponent("bitrix:menu", "static-bottom", Array(
+					"ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+						"CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+						"DELAY" => "N",	// Откладывать выполнение шаблона меню
+						"MAX_LEVEL" => "1",	// Уровень вложенности меню
+						"MENU_CACHE_GET_VARS" => array(	// Значимые переменные запроса
+							0 => "",
+						),
+						"MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+						"MENU_CACHE_TYPE" => "A",	// Тип кеширования
+						"MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+						"ROOT_MENU_TYPE" => "bottom",	// Тип меню для первого уровня
+						"USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+					),
+					false
+				);?>
               </div>
             </div>
 
@@ -194,6 +179,7 @@ use Bitrix\Main\Page\Asset;
               </div>
             </div>
           </div>
+
 
           <div class="bx-footer-section__item bx-footer-section__item_right">
             <!--					<div style="padding: 20px;background:#eaeaeb">-->

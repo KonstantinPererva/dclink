@@ -154,6 +154,13 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			{
 				this.initUserConsent();
 			}
+
+			// если выбрана новая почта, получим отделения и стоимочть доставки
+			var currentDelivery = this.getSelectedDelivery();
+			if(currentDelivery.ID == 5 || currentDelivery.ID == 6){
+				$(".bx-soa-customer-field[data-property-id-row=27]").hide();
+				this.getWarehouses(currentDelivery.ID);
+			}
 		},
 
 		/**
@@ -229,9 +236,11 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 						BX.cleanNode(this.savedFilesBlockNode);
 						this.endLoader();
 
-						var currentDelivery = this.getSelectedDelivery();
 
+						// если выбрана новая почта, получим отделения и стоимочть доставки
+						var currentDelivery = this.getSelectedDelivery();
 						if(currentDelivery.ID == 5 || currentDelivery.ID == 6){
+							$(".bx-soa-customer-field[data-property-id-row=27]").hide();
 							this.getWarehouses(currentDelivery.ID);
 						}
 
@@ -5233,7 +5242,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			BX.cleanNode(deliveryInfoContainer);
 			currentDelivery = this.getSelectedDelivery();
-
+			console.log("editDeliveryInfo");
+			console.log(currentDelivery);
 			if(currentDelivery.ID == 5 || currentDelivery.ID == 6){
 				warehouses = BX.create('DIV', {props: {className: 'bx-soa-pp-warehouses'}});
 			}/* else {
@@ -5331,7 +5341,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		},
 
 		getWarehouses: function(delivery_id){
-			var city = $("body").find(".bx-ui-sls-fake").val(),
+			var city = this.result.CITY,
 				warehouses = ''
 			;
 			if($("#bx-soa-order").data("warehouse") != null || $("#bx-soa-order").data("warehouse") != undefined ) {

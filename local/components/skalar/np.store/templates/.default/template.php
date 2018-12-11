@@ -30,7 +30,7 @@
 	<p class="gr">Заказ, оформленный до 13:00, отправляется в этот же день. </p>
 	<?*/?>
 	<?if(!empty($arResult['DELIVERY_SYSTEMS'][0]["PROFILES"]["ware"])):?>
-		<select name="variants" id="warehouse-list" style="height: 40px; font-size: 14px; width: 100%;">
+		<select name="warehouses" id="warehouse-list" style="height: 40px; font-size: 14px; width: 100%;">
 			<?foreach($arResult['DELIVERY_SYSTEMS'][0]["PROFILES"]["ware"]["NP"]["WareHouses"] as $key=>$arWarehouse):?>
 				<option data-wh-ref="<?=$arWarehouse['Ref']?>" <?=($arWarehouse['Ref'] == $arParams["WARE_HOUSE"])?'selected': ''?> ><?=$arWarehouse['DescriptionRu']?></option>
 			<?endforeach;?>

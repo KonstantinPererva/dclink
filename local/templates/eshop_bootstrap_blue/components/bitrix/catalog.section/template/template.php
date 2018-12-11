@@ -182,17 +182,18 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 		}
 		?>
 		<!-- items-container -->
+    			<div class="product-card-list">
 		<?
 		foreach ($arResult['ITEM_ROWS'] as $rowData)
 		{
 			$rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);
 			?>
-			<div class="row <?=$rowData['CLASS']?>" data-entity="items-row">
 				<?
 				switch ($rowData['VARIANT'])
 				{
 					case 0:
 						?>
+              <span>0000000000000</span>
 						<div class="col-xs-12 product-item-small-card">
 							<div class="row">
 								<div class="col-xs-12 product-item-big-card">
@@ -230,6 +231,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 
 					case 1:
 						?>
+            <span>1111111111111</span>
 						<div class="col-xs-12 product-item-small-card">
 							<div class="row">
 								<?
@@ -271,51 +273,38 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 						<?
 						break;
 
-					case 2:
-						?>
-						<div class="col-xs-12 product-item-small-card">
-							<div class="row">
-								<?
-								foreach ($rowItems as $item)
-								{
-									?>
-									<div class="col-sm-4 product-item-big-card">
-										<div class="row">
-											<div class="col-md-12">
-												<?
-												$APPLICATION->IncludeComponent(
-													'bitrix:catalog.item',
-													'',
-													array(
-														'RESULT' => array(
-															'ITEM' => $item,
-															'AREA_ID' => $areaIds[$item['ID']],
-															'TYPE' => $rowData['TYPE'],
-															'BIG_LABEL' => 'N',
-															'BIG_DISCOUNT_PERCENT' => 'N',
-															'BIG_BUTTONS' => 'Y',
-															'SCALABLE' => 'N'
-														),
-														'PARAMS' => $generalParams
-															+ array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
-													),
-													$component,
-													array('HIDE_ICONS' => 'Y')
-												);
-												?>
-											</div>
-										</div>
-									</div>
-									<?
-								}
-								?>
-							</div>
-						</div>
-						<?
-						break;
+					case 2: ?>
+              <? foreach ($rowItems as $item) { ?>
+                  <div class="product-card">
+                    <?
+                    $APPLICATION->IncludeComponent(
+                      'bitrix:catalog.item',
+                      '',
+                      array(
+                        'RESULT' => array(
+                          'ITEM' => $item,
+                          'AREA_ID' => $areaIds[$item['ID']],
+                          'TYPE' => $rowData['TYPE'],
+                          'BIG_LABEL' => 'N',
+                          'BIG_DISCOUNT_PERCENT' => 'N',
+                          'BIG_BUTTONS' => 'Y',
+                          'SCALABLE' => 'N'
+                        ),
+                        'PARAMS' => $generalParams
+                          + array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
+                      ),
+                      $component,
+                      array('HIDE_ICONS' => 'Y')
+                    );
+                    ?>
+                  </div>
+              <? } ?>
+
+						<? break;
 
 					case 3:
 						?>
+            <span>3333333333333333</span>
 						<div class="col-xs-12 product-item-small-card">
 							<div class="row">
 								<?
@@ -356,6 +345,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 					case 4:
 						$rowItemsCount = count($rowItems);
 						?>
+            <span>4444444444444</span>
 						<div class="col-sm-6 product-item-big-card">
 							<div class="row">
 								<div class="col-md-12">
@@ -425,6 +415,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 					case 5:
 						$rowItemsCount = count($rowItems);
 						?>
+            <span>555555555555555555</span>
 						<div class="col-sm-6 product-item-small-card">
 							<div class="row">
 								<?
@@ -493,6 +484,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 
 					case 6:
 						?>
+            <span>6666666666666</span>
 						<div class="col-xs-12 product-item-small-card">
 							<div class="row">
 								<?
@@ -533,6 +525,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 					case 7:
 						$rowItemsCount = count($rowItems);
 						?>
+            <span>777777777777777</span>
 						<div class="col-sm-6 product-item-big-card">
 							<div class="row">
 								<div class="col-md-12">
@@ -602,6 +595,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 					case 8:
 						$rowItemsCount = count($rowItems);
 						?>
+            <span>888888888888</span>
 						<div class="col-sm-6 product-item-small-card">
 							<div class="row">
 								<?
@@ -670,6 +664,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 
 					case 9:
 						?>
+            <span>999999999999999</span>
 						<div class="col-xs-12">
 							<div class="row">
 								<?
@@ -708,11 +703,11 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 						break;
 				}
 				?>
-			</div>
 			<?
 		}
 		unset($generalParams, $rowItems);
 		?>
+    			</div>
 		<!-- items-container -->
 		<?
 	}

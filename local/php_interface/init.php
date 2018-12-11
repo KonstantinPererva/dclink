@@ -19,3 +19,11 @@ if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/lib/ElementProp
 if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/event_handlers.php")){
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/event_handlers.php";
 }
+
+if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/order_event_handlers.php")){
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/order_event_handlers.php";
+}
+
+if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/pictures_agent.php")){
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/include/pictures_agent.php";
+}

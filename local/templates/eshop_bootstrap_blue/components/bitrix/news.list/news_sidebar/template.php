@@ -77,7 +77,7 @@ $this->setFrameMode(true);
   </ul>
 
   <div class="news-banner__button">
-    <a class="button-see-more" href="<?SITE_DIR?>/news/">
+    <a class="button-see-more" href="<?SITE_DIR?>/overviews/">
       <span class="button-see-more__text">
         Смотреть ещё
       </span>

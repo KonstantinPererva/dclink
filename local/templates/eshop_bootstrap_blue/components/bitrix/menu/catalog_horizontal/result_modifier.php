@@ -146,7 +146,7 @@ if (IsModuleInstalled("iblock"))
 			$curIblockID = 0;
 			if ($arIBlock = $dbIBlock->GetNext())
 			{
-				$dbSections = CIBlockSection::GetList(array(), array("IBLOCK_ID" => $arIBlock["ID"]), false, array("ID", "SECTION_PAGE_URL", "PICTURE", "DESCRIPTION"));
+				$dbSections = CIBlockSection::GetList(array(), array("IBLOCK_ID" => $arIBlock["ID"]), false, array("ID", "SECTION_PAGE_URL", "PICTURE", "DESCRIPTION", "UF_SVG"));
 				while($arSections = $dbSections->GetNext())
 				{
 					$pictureSrc = CFile::GetFileArray($arSections["PICTURE"]);
@@ -160,6 +160,7 @@ if (IsModuleInstalled("iblock"))
 						);
 
 					$arSectionsInfo[crc32($arSections["SECTION_PAGE_URL"])]["PICTURE"] = $pictureSrc ? $arResizePicture["src"] : false;
+					$arSectionsInfo[crc32($arSections["SECTION_PAGE_URL"])]["SVG"] = $arSections["~UF_SVG"] ? $arSections["~UF_SVG"] : false;
 					$arSectionsInfo[crc32($arSections["SECTION_PAGE_URL"])]["DESCRIPTION"] = $arSections["DESCRIPTION"];
 				}
 				if(defined("BX_COMP_MANAGED_CACHE"))
@@ -188,6 +189,7 @@ foreach($arResult as $key=>$arItem)
 
 	$arItem["PARAMS"]["item_id"] = crc32($arItem["LINK"]);
 	$arItem["PARAMS"]["picture_src"] = $arSectionsInfo[$arItem["PARAMS"]["item_id"]]["PICTURE"];
+	$arItem["PARAMS"]["picture_svg"] = $arSectionsInfo[$arItem["PARAMS"]["item_id"]]["SVG"];
 	$arItem["PARAMS"]["description"] = $arSectionsInfo[$arItem["PARAMS"]["item_id"]]["DESCRIPTION"];
 
 	if ($arItem["DEPTH_LEVEL"] == "1")
